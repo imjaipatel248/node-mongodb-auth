@@ -24,7 +24,6 @@ exports.signin = (req, res) => {
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY);
 
-    console.log(token);
     res.cookie("t", token, { expire: new Date() + 9999 });
     const { _id, name, email } = user;
     return res.json({ token, user: { _id, name, email } });
